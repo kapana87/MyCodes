@@ -27,3 +27,6 @@ class StrExtension:
         return string
 
 
+print(StrExtension.replace_all('Python', 'Ptn', '-'))
+print(StrExtension.replace_all('Stepik', 'stk', '#'))
+
