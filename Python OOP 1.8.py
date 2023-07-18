@@ -37,3 +37,16 @@ class QuadraticPolynomial:
     @coefficients.setter
     def coefficients(self, trinomial_coefficients):
         self.a, self.b, self.c = trinomial_coefficients
+
+
+polynom = QuadraticPolynomial(1, 2, -3)
+
+print(polynom.view)
+print(polynom.coefficients)
+
+print()
+
+polynom = QuadraticPolynomial(1, 2, -3)
+
+print(polynom.x1)
+print(polynom.x2)
