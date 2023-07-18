@@ -17,3 +17,8 @@ class Wordplay:
 
     def avoid(self, *args):
         return [word for word in self.words if set(word).isdisjoint(set(args))]
+
+
+wordplay = Wordplay(['o', 'to', 'otto', 'top', 't'])
+
+print(wordplay.only('o', 't'))
