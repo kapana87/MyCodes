@@ -25,3 +25,18 @@ class Account:
     @password.setter
     def password(self, password):
         self._password = hash_function(password)
+
+
+account = Account('timyr-guev', 'lovebeegeek')
+
+print(account.password)
+account.password = 'verylovebeegeek'
+print(account.password)
+
+print()
+
+account = Account('timyr-guev', 'lovebeegeek')
+try:
+    account.login = 'timyrik30'
+except AttributeError as e:
+    print(e)
