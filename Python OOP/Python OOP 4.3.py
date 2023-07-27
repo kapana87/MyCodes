@@ -47,7 +47,6 @@ class Matrix:
         return new_matrix
 
 
-
 matrix = Matrix(2, 3, 1)
 
 print(+matrix)
