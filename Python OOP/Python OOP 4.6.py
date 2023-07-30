@@ -1,19 +1,18 @@
+def check_type(*arg_types):
+    def decorator(func):
+        def wrapped(self, other, *args, **kwargs):
+            if isinstance(other, arg_types):
+                return func(self, other, *args, **kwargs)
+            return NotImplemented
+        return wrapped
+    return decorator
+
+
 class PSuperString:
     pass
 
 
 class SuperString(PSuperString):
-
-    def check_type(*arg_types):
-        def decorator(func):
-            def wrapped(self, other, *args, **kwargs):
-                if isinstance(other, arg_types):
-                    return func(self, other, *args, **kwargs)
-                return NotImplemented
-
-            return wrapped
-
-        return decorator
 
     def __init__(self, string):
         self.string = string
