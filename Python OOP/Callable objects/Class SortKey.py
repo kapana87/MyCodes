@@ -3,7 +3,6 @@ class SortKey:
         self.args = args
 
     def __call__(self, obj):
-        print(self.args)
         return tuple(getattr(obj, atr) for atr in self.args)
 
 
