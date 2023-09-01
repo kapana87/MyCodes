@@ -4,10 +4,10 @@ from copy import deepcopy
 class OrderedSet:
 
     def __init__(self, iterable=None) -> None:
-        self.iterable = {} if iterable is None else {key for key in iterable}
+        self.iterable = {} if iterable is None else {key:None for key in iterable}
 
     def add(self, item):
-        self.iterable[item] = self.iterable.get(item)
+        self.iterable[item] = None
 
     def discard(self, item):
         if item in self.iterable:
@@ -17,23 +17,20 @@ class OrderedSet:
         return len(self.iterable)
     
     def __iter__(self):
-        yield from self.iterable
+        iterable = deepcopy(self.iterable)
+        yield from iterable
 
     def __contains__(self, item):
         return item in self.iterable
     
     def __eq__(self, other: object) -> bool:
         if isinstance(other, OrderedSet):
-            return self.iterable == other.iterable
+            return self.iterable == other.iterable and tuple(self.iterable) == tuple(other.iterable)
+        elif isinstance(other, set):
+            return set(self.iterable) == other
         else:
             return NotImplemented
-        
-    def __ne__(self, other: object) -> bool:
-        if isinstance(other, OrderedSet):
-            return not self.__eq__(other)
-        else:
-            return NotImplemented
-    
+
 
 orderedset = OrderedSet(['bee', 'python', 'stepik', 'bee', 'geek', 'python', 'bee'])
 
