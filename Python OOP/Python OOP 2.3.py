@@ -21,3 +21,7 @@ class CaseHelper:
         return ''.join(word.capitalize() for word in text.split('_'))
 
 
+cases = ['AssertEqual', 'SetUp', 'TearDown', 'AddModuleCleanup', 'AssertRaisesRegex', 'AssertAlmostEqual', 'AssertNotAlmostEqual']
+
+for case in cases:
+    print(CaseHelper.to_snake(case))
