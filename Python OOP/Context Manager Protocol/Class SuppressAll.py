@@ -1,18 +1,15 @@
-import sys
-
-class RedirectedStdout:
-    def __init__(self, new_output):
-        self.new_output = new_output
-
+class SuppressAll:
     def __enter__(self):
-        self.standard_output = sys.stdout
-        sys.stdout = self.new_output
+        return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        sys.stdout = self.standard_output
+        return True
+    
 
+print('start')
 
-with open('output.txt', mode='w', encoding='utf-8') as file:
-    with RedirectedStdout(file):
-        print('Python generation!')
-    print('Возврат к стандартному потоку вывода')
+with SuppressAll():
+    print('Python generation!')
+    raise ValueError
+
+print('end')
